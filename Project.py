@@ -5,7 +5,7 @@ def end_of_game():
      if player_1_health <= 0:
           text_surf = test_font.render('REBECCA WINS!!', False, RED)
      if player_2_health <=0:
-          text_surf = test_font.render('BOB 2 WINS!!', False, RED)
+          text_surf = test_font.render('BOB WINS!!', False, RED)
 
 
 def walk_p1():
@@ -16,6 +16,14 @@ def walk_p1():
             player_index_1 = 0
         player_1_surf = player1_walk_animation[int(player_index_1)]
 
+def walk_p1_left():
+    global  player_1_surf, player_index_1
+    if player_1_rect.y <= 300:
+        player_index_1 += 1
+        if player_index_1 >= len(player1_walk_animation_left):
+            player_index_1 = 0
+        player_1_surf = player1_walk_animation_left[int(player_index_1)]
+
 
 def walk_p2():
     global player_index_2, player_2_surf
@@ -24,6 +32,12 @@ def walk_p2():
         player_index_2 = 0
     player_2_surf = player2_walk_animation[int(player_index_2)]
 
+def walk_p2_right():
+    global player_index_2, player_2_surf
+    player_index_2 += 1
+    if player_index_2 >= len(player2_walk_animation_right):
+        player_index_2 = 0
+    player_2_surf = player2_walk_animation_right[int(player_index_2)]
 
 def attack_p1():
         global  player_1_surf, player_index_1
@@ -32,13 +46,27 @@ def attack_p1():
             player_index_1 = 0
         player_1_surf = player1_attack_animation[int(player_index_1)]
 
+def attack_p1_left():
+        global  player_1_surf, player_index_1
+        player_index_1 += 1
+        if player_index_1 >= len(player1_attack_animation_left):
+            player_index_1 = 0
+        player_1_surf = player1_attack_animation_left[int(player_index_1)]
+
 
 def attack_p2():
-        global player_index_2, player_2_surf
-        player_index_2 += 1
-        if player_index_2 >= len(player2_attack_animation):
-            player_index_2 = 0
-        player_2_surf = player2_attack_animation[int(player_index_2)]
+    global player_index_2, player_2_surf
+    player_index_2 += 1
+    if player_index_2 >= len(player2_attack_animation):
+        player_index_2 = 0
+    player_2_surf = player2_attack_animation[int(player_index_2)]
+
+def attack_p2_right():
+    global player_index_2, player_2_surf
+    player_index_2 += 1
+    if player_index_2 >= len(player2_attack_animation_right):
+        player_index_2 = 0
+    player_2_surf = player2_attack_animation_right[int(player_index_2)]
         
 def throw_attack_p1():
     global  player_1_surf, player_index_1
@@ -47,6 +75,13 @@ def throw_attack_p1():
         player_index_1 = 0
     player_1_surf = player1_throw_animation[int(player_index_1)]
 
+def throw_attack_p1_left():
+    global  player_1_surf, player_index_1
+    player_index_1 += 1
+    if player_index_1 >= len(player1_throw_animation_left):
+        player_index_1 = 0
+    player_1_surf = player1_throw_animation_left[int(player_index_1)]
+
 def jump_throw_attack_p1():
     global  player_1_surf, player_index_1
     player_index_1 += 1
@@ -54,6 +89,14 @@ def jump_throw_attack_p1():
         player_index_1 = 0
     player_1_surf = player1_jump_throw_animation[int(player_index_1)]
 
+def jump_throw_attack_p1_left():
+    global  player_1_surf, player_index_1
+    player_index_1 += 1
+    if player_index_1 >= len(player1_jump_throw_animation_left):
+        player_index_1 = 0
+    player_1_surf = player1_jump_throw_animation_left[int(player_index_1)]
+
+    
 def throw_attack_p2():
         global player_index_2, player_2_surf
         player_index_2 += 1
@@ -61,6 +104,12 @@ def throw_attack_p2():
             player_index_2 = 0
         player_2_surf = player2_throw_animation[int(player_index_2)]
 
+def throw_attack_p2_right():
+        global player_index_2, player_2_surf
+        player_index_2 += 1
+        if player_index_2 >= len(player2_throw_animation_right):
+            player_index_2 = 0
+        player_2_surf = player2_throw_animation_right[int(player_index_2)]
 
 def jump_throw_attack_p2():
         global player_index_2, player_2_surf
@@ -69,6 +118,12 @@ def jump_throw_attack_p2():
             player_index_2 = 0
         player_2_surf = player2_jump_throw_animation[int(player_index_2)]
 
+def jump_throw_attack_p2_right():
+        global player_index_2, player_2_surf
+        player_index_2 += 1
+        if player_index_2 >= len(player2_jump_throw_animation_right):
+            player_index_2 = 0
+        player_2_surf = player2_jump_throw_animation_right[int(player_index_2)]
 
 
 
@@ -88,6 +143,22 @@ def player_animation_p1():
             player_index_1 = 0
         player_1_surf = player1_idle_animation[int(player_index_1)]
 
+def player_animation_p1_left():
+    global player_1_surf, player_index_1, player_jump_index_1
+    
+    if player_1_rect.bottom < 300:
+        player_jump_index_1 += 0.2 
+        if player_jump_index_1 >= len(player1_jump_animation):
+            player_jump_index_1 = 0
+        player_1_surf = player1_jump_animation[int(player_jump_index_1)]
+
+    else:
+        player_jump_index_1 = 0
+        player_index_1 += 0.1
+        if player_index_1 >= len(player1_idle_animation_left):
+            player_index_1 = 0
+        player_1_surf = player1_idle_animation_left[int(player_index_1)]
+
 def player_animation_p2():
     global player_index_2, player_2_surf, player_jump_index_2
     if player_2_rect.bottom < 300:
@@ -103,6 +174,20 @@ def player_animation_p2():
             player_index_2 = 0
         player_2_surf = player2_idle_animation[int(player_index_2)]
 
+def player_animation_p2_right():
+    global player_index_2, player_2_surf, player_jump_index_2
+    if player_2_rect.bottom < 300:
+        player_jump_index_2 += 0.2 
+        if player_jump_index_2 >= len(player2_jump_animation):
+            player_jump_index_2 = 0
+        player_2_surf = player2_jump_animation[int(player_jump_index_2)]
+
+    else:
+        player_jump_index_2 = 0
+        player_index_2 += 0.1
+        if player_index_2 >= len(player2_idle_animation_right):
+            player_index_2 = 0
+        player_2_surf = player2_idle_animation_right[int(player_index_2)]
     
 
     
@@ -185,6 +270,38 @@ player1_idle_9 = pygame.image.load('graphics/ninja_1/Idle__009.png').convert_alp
 player1_idle_9 = pygame.transform.scale(player1_idle_9, (65,100))
 
 player1_idle_animation = [player_1_surf,player1_idle_1, player1_idle_2, player1_idle_3, player1_idle_4, player1_idle_5, player1_idle_6, player1_idle_7, player1_idle_8, player1_idle_9]
+
+
+player1_idle_1_left = pygame.image.load('graphics/ninja_1/Idle__001.png').convert_alpha()
+player1_idle_1_left= pygame.transform.scale(player1_idle_1_left, (65,100))
+player1_idle_1_left = pygame.transform.flip(player1_idle_1_left, True, False)
+player1_idle_2_left = pygame.image.load('graphics/ninja_1/Idle__002.png').convert_alpha()
+player1_idle_2_left = pygame.transform.scale(player1_idle_2_left, (65,100))
+player1_idle_2_left = pygame.transform.flip(player1_idle_2_left, True, False)
+player1_idle_3_left = pygame.image.load('graphics/ninja_1/Idle__003.png').convert_alpha()
+player1_idle_3_left = pygame.transform.scale(player1_idle_3_left, (65,100))
+player1_idle_3_left = pygame.transform.flip(player1_idle_3_left, True, False)
+player1_idle_4_left = pygame.image.load('graphics/ninja_1/Idle__004.png').convert_alpha()
+player1_idle_4_left = pygame.transform.scale(player1_idle_4_left, (65,100))
+player1_idle_4_left = pygame.transform.flip(player1_idle_4_left, True, False)
+player1_idle_5_left = pygame.image.load('graphics/ninja_1/Idle__005.png').convert_alpha()
+player1_idle_5_left = pygame.transform.scale(player1_idle_5_left, (65,100))
+player1_idle_5_left = pygame.transform.flip(player1_idle_5_left, True, False)
+player1_idle_6_left = pygame.image.load('graphics/ninja_1/Idle__006.png').convert_alpha()
+player1_idle_6_left = pygame.transform.scale(player1_idle_6_left, (65,100))
+player1_idle_6_left = pygame.transform.flip(player1_idle_6_left, True, False)
+player1_idle_7_left = pygame.image.load('graphics/ninja_1/Idle__007.png').convert_alpha()
+player1_idle_7_left = pygame.transform.scale(player1_idle_7_left, (65,100))
+player1_idle_7_left= pygame.transform.flip(player1_idle_7_left, True, False)
+player1_idle_8_left = pygame.image.load('graphics/ninja_1/Idle__008.png').convert_alpha()
+player1_idle_8_left = pygame.transform.scale(player1_idle_8_left, (65,100))
+player1_idle_8_left = pygame.transform.flip(player1_idle_8_left, True, False)
+player1_idle_9_left = pygame.image.load('graphics/ninja_1/Idle__009.png').convert_alpha()
+player1_idle_9_left = pygame.transform.scale(player1_idle_9_left, (65,100))
+player1_idle_9_left = pygame.transform.flip(player1_idle_9_left, True, False)
+
+player1_idle_animation_left = [player1_idle_1_left, player1_idle_2_left, player1_idle_3_left, player1_idle_4_left, player1_idle_5_left, player1_idle_6_left, player1_idle_7_left, player1_idle_8_left, player1_idle_9_left]
+
 ###_________________________________________________________________________________
 #IDLE animation p2
 ###_________________________________________________________________________________
@@ -218,6 +335,28 @@ player2_idle_9 = pygame.transform.flip(player2_idle_9, True,False)
 
 player2_idle_animation = [player2_idle_1, player2_idle_2, player2_idle_3, player2_idle_4, player2_idle_5, player2_idle_6, player2_idle_7, player2_idle_8, player2_idle_9]
 
+player2_idle_1_right = pygame.image.load('graphics/ninja_2/Idle__001.png').convert_alpha()
+player2_idle_1_right= pygame.transform.scale(player2_idle_1_right, (65,100))
+player2_idle_2_right = pygame.image.load('graphics/ninja_2/Idle__002.png').convert_alpha()
+player2_idle_2_right = pygame.transform.scale(player2_idle_2_right, (65,100))
+player2_idle_3_right = pygame.image.load('graphics/ninja_2/Idle__003.png').convert_alpha()
+player2_idle_3_right = pygame.transform.scale(player2_idle_3_right, (65,100))
+player2_idle_4_right = pygame.image.load('graphics/ninja_2/Idle__004.png').convert_alpha()
+player2_idle_4_right = pygame.transform.scale(player2_idle_4_right, (65,100))
+player2_idle_5_right = pygame.image.load('graphics/ninja_2/Idle__005.png').convert_alpha()
+player2_idle_5_right = pygame.transform.scale(player2_idle_5_right, (65,100))
+player2_idle_6_right = pygame.image.load('graphics/ninja_2/Idle__006.png').convert_alpha()
+player2_idle_6_right = pygame.transform.scale(player2_idle_6_right, (65,100))
+player2_idle_7_right = pygame.image.load('graphics/ninja_2/Idle__007.png').convert_alpha()
+player2_idle_7_right= pygame.transform.scale(player2_idle_7_right, (65,100))
+player2_idle_8_right = pygame.image.load('graphics/ninja_2/Idle__008.png').convert_alpha()
+player2_idle_8_right = pygame.transform.scale(player2_idle_8_right, (65,100))
+player2_idle_9_right = pygame.image.load('graphics/ninja_2/Idle__009.png').convert_alpha()
+player2_idle_9_right = pygame.transform.scale(player2_idle_9_right, (65,100))
+
+
+player2_idle_animation_right = [player2_idle_1_right, player2_idle_2_right, player2_idle_3_right, player2_idle_4_right, player2_idle_5_right, player2_idle_6_right, player2_idle_7_right, player2_idle_8_right, player2_idle_9_right]
+
 ###_________________________________________________________________________________
 #ATTACK p1
 ###_________________________________________________________________________________
@@ -244,7 +383,40 @@ player1_attack_9 = pygame.transform.scale(player1_attack_9, (130,115))
 
 player1_attack_animation = [player1_attack_0, player1_attack_1, player1_attack_2, player1_attack_3, player1_attack_4, player1_attack_5, player1_attack_6, player1_attack_7, player1_attack_8, player1_attack_9]
 
-player1_throw_0 = pygame.image.load('graphics/ninja_1/Throw__000.png').convert_alpha()
+player1_attack_0_left = pygame.image.load('graphics/ninja_1/Attack__000.png').convert_alpha()
+player1_attack_0_left= pygame.transform.scale(player1_attack_0_left, (130,115))
+player1_attack_0_left = pygame.transform.flip(player1_attack_0_left, True, False)
+player1_attack_1_left = pygame.image.load('graphics/ninja_1/Attack__001.png').convert_alpha()
+player1_attack_1_left= pygame.transform.scale(player1_attack_1_left, (130,115))
+player1_attack_1_left = pygame.transform.flip(player1_attack_1_left , True, False)
+player1_attack_2_left = pygame.image.load('graphics/ninja_1/Attack__002.png').convert_alpha()
+player1_attack_2_left = pygame.transform.scale(player1_attack_2_left, (130,115))
+player1_attack_2_left = pygame.transform.flip(player1_attack_2_left , True, False)
+player1_attack_3_left = pygame.image.load('graphics/ninja_1/Attack__003.png').convert_alpha()
+player1_attack_3_left = pygame.transform.scale(player1_attack_3_left, (130,115))
+player1_attack_3_left = pygame.transform.flip(player1_attack_3_left , True, False)
+player1_attack_4_left = pygame.image.load('graphics/ninja_1/Attack__004.png').convert_alpha()
+player1_attack_4_left = pygame.transform.scale(player1_attack_4_left, (130,115))
+player1_attack_4_left = pygame.transform.flip(player1_attack_4_left , True, False)
+player1_attack_5_left = pygame.image.load('graphics/ninja_1/Attack__005.png').convert_alpha()
+player1_attack_5_left = pygame.transform.scale(player1_attack_5_left, (130,115))
+player1_attack_5_left = pygame.transform.flip(player1_attack_5_left , True, False)
+player1_attack_6_left = pygame.image.load('graphics/ninja_1/Attack__006.png').convert_alpha()
+player1_attack_6_left = pygame.transform.scale(player1_attack_6_left, (130,115))
+player1_attack_6_left = pygame.transform.flip(player1_attack_6_left , True, False)
+player1_attack_7_left = pygame.image.load('graphics/ninja_1/Attack__007.png').convert_alpha()
+player1_attack_7_left = pygame.transform.scale(player1_attack_7_left, (130,115))
+player1_attack_7_left = pygame.transform.flip(player1_attack_7_left , True, False)
+player1_attack_8_left= pygame.image.load('graphics/ninja_1/Attack__008.png').convert_alpha()
+player1_attack_8_left = pygame.transform.scale(player1_attack_8_left, (130,115))
+player1_attack_8_left = pygame.transform.flip(player1_attack_8_left , True, False)
+player1_attack_9_left = pygame.image.load('graphics/ninja_1/Attack__009.png').convert_alpha()
+player1_attack_9_left = pygame.transform.scale(player1_attack_9_left, (130,115))
+player1_attack_9_left = pygame.transform.flip(player1_attack_9_left , True, False)
+
+player1_attack_animation_left = [player1_attack_0_left, player1_attack_1_left, player1_attack_2_left, player1_attack_3_left, player1_attack_4_left, player1_attack_5_left, player1_attack_6_left, player1_attack_7_left, player1_attack_8_left, player1_attack_9_left]
+
+player1_throw_0= pygame.image.load('graphics/ninja_1/Throw__000.png').convert_alpha()
 player1_throw_0= pygame.transform.scale(player1_throw_0, (130,115))
 player1_throw_1 = pygame.image.load('graphics/ninja_1/Throw__001.png').convert_alpha()
 player1_throw_1= pygame.transform.scale(player1_throw_1, (130,115))
@@ -266,6 +438,40 @@ player1_throw_9 = pygame.image.load('graphics/ninja_1/Throw__009.png').convert_a
 player1_throw_9 = pygame.transform.scale(player1_throw_9, (130,115))
 
 player1_throw_animation = [player1_throw_0, player1_throw_1, player1_throw_2, player1_throw_3, player1_throw_4, player1_throw_5, player1_throw_6, player1_throw_7, player1_throw_8, player1_throw_9]
+
+player1_throw_0_left = pygame.image.load('graphics/ninja_1/Throw__000.png').convert_alpha()
+player1_throw_0_left= pygame.transform.scale(player1_throw_0_left, (130,115))
+player1_throw_0_left = pygame.transform.flip(player1_throw_0_left, True, False)
+player1_throw_1_left = pygame.image.load('graphics/ninja_1/Throw__001.png').convert_alpha()
+player1_throw_1_left= pygame.transform.scale(player1_throw_1_left, (130,115))
+player1_throw_1_left = pygame.transform.flip(player1_throw_1_left , True, False)
+player1_throw_2_left = pygame.image.load('graphics/ninja_1/Throw__002.png').convert_alpha()
+player1_throw_2_left = pygame.transform.scale(player1_throw_2_left, (130,115))
+player1_throw_2_left = pygame.transform.flip(player1_throw_2_left , True, False)
+player1_throw_3_left = pygame.image.load('graphics/ninja_1/Throw__003.png').convert_alpha()
+player1_throw_3_left = pygame.transform.scale(player1_throw_3_left, (130,115))
+player1_throw_3_left = pygame.transform.flip(player1_throw_3_left , True, False)
+player1_throw_4_left = pygame.image.load('graphics/ninja_1/Throw__004.png').convert_alpha()
+player1_throw_4_left = pygame.transform.scale(player1_throw_4_left, (130,115))
+player1_throw_4_left = pygame.transform.flip(player1_throw_4_left , True, False)
+player1_throw_5_left = pygame.image.load('graphics/ninja_1/Throw__005.png').convert_alpha()
+player1_throw_5_left = pygame.transform.scale(player1_throw_5_left, (130,115))
+player1_throw_5_left = pygame.transform.flip(player1_throw_5_left , True, False)
+player1_throw_6_left = pygame.image.load('graphics/ninja_1/Throw__006.png').convert_alpha()
+player1_throw_6_left = pygame.transform.scale(player1_throw_6_left, (130,115))
+player1_throw_6_left = pygame.transform.flip(player1_throw_6_left , True, False)
+player1_throw_7_left = pygame.image.load('graphics/ninja_1/Throw__007.png').convert_alpha()
+player1_throw_7_left = pygame.transform.scale(player1_throw_7_left, (130,115))
+player1_throw_7_left = pygame.transform.flip(player1_throw_7_left , True, False)
+player1_throw_8_left= pygame.image.load('graphics/ninja_1/Throw__008.png').convert_alpha()
+player1_throw_8_left = pygame.transform.scale(player1_throw_8_left, (130,115))
+player1_throw_8_left = pygame.transform.flip(player1_throw_8_left , True, False)
+player1_throw_9_left = pygame.image.load('graphics/ninja_1/Throw__009.png').convert_alpha()
+player1_throw_9_left = pygame.transform.scale(player1_throw_9_left, (130,115))
+player1_throw_9_left = pygame.transform.flip(player1_throw_9_left , True, False)
+
+player1_throw_animation_left = [player1_throw_0_left, player1_throw_1_left, player1_throw_2_left, player1_throw_3_left, player1_throw_4_left, player1_throw_5_left, player1_throw_6_left, player1_throw_7_left, player1_throw_8_left, player1_throw_9_left]
+
 
 player1_jump_throw_0 = pygame.image.load('graphics/ninja_1/Jump_Throw__000.png').convert_alpha()
 player1_jump_throw_0= pygame.transform.scale(player1_jump_throw_0, (130,115))
@@ -289,6 +495,40 @@ player1_jump_throw_9 = pygame.image.load('graphics/ninja_1/Jump_Throw__009.png')
 player1_jump_throw_9 = pygame.transform.scale(player1_jump_throw_9, (130,115))
 
 player1_jump_throw_animation = [player1_jump_throw_0,player1_jump_throw_1, player1_jump_throw_2, player1_jump_throw_3, player1_jump_throw_4, player1_jump_throw_5, player1_jump_throw_6, player1_jump_throw_7, player1_jump_throw_8, player1_jump_throw_9]
+
+player1_jump_throw_0_left = pygame.image.load('graphics/ninja_1/Jump_Throw__000.png').convert_alpha()
+player1_jump_throw_0_left = pygame.transform.scale(player1_jump_throw_0_left, (110,110))
+player1_jump_throw_0_left = pygame.transform.flip(player1_jump_throw_0_left, True, False)
+player1_jump_throw_1_left = pygame.image.load('graphics/ninja_1/Jump_Throw__001.png').convert_alpha()
+player1_jump_throw_1_left = pygame.transform.scale(player1_jump_throw_1_left, (110,110))
+player1_jump_throw_1_left = pygame.transform.flip(player1_jump_throw_1_left, True, False)
+player1_jump_throw_2_left = pygame.image.load('graphics/ninja_1/Jump_Throw__002.png').convert_alpha()
+player1_jump_throw_2_left = pygame.transform.scale(player1_jump_throw_2_left, (110,110))
+player1_jump_throw_2_left = pygame.transform.flip(player1_jump_throw_2_left, True, False)
+player1_jump_throw_3_left = pygame.image.load('graphics/ninja_1/Jump_Throw__003.png').convert_alpha()
+player1_jump_throw_3_left = pygame.transform.scale(player1_jump_throw_3_left, (110,110))
+player1_jump_throw_3_left = pygame.transform.flip(player1_jump_throw_3_left, True, False)
+player1_jump_throw_4_left = pygame.image.load('graphics/ninja_1/Jump_Throw__004.png').convert_alpha()
+player1_jump_throw_4_left = pygame.transform.scale(player1_jump_throw_4_left, (110,110))
+player1_jump_throw_4_left = pygame.transform.flip(player1_jump_throw_4_left, True, False)
+player1_jump_throw_5_left = pygame.image.load('graphics/ninja_1/Jump_Throw__005.png').convert_alpha()
+player1_jump_throw_5_left = pygame.transform.scale(player1_jump_throw_5_left, (110,110))
+player1_jump_throw_5_left = pygame.transform.flip(player1_jump_throw_5_left, True, False)
+player1_jump_throw_6_left = pygame.image.load('graphics/ninja_1/Jump_Throw__006.png').convert_alpha()
+player1_jump_throw_6_left = pygame.transform.scale(player1_jump_throw_6_left, (110,110))
+player1_jump_throw_6_left = pygame.transform.flip(player1_jump_throw_6_left, True, False)
+player1_jump_throw_7_left = pygame.image.load('graphics/ninja_1/Jump_Throw__007.png').convert_alpha()
+player1_jump_throw_7_left = pygame.transform.scale(player1_jump_throw_7_left, (110,110))
+player1_jump_throw_7_left = pygame.transform.flip(player1_jump_throw_7_left, True, False)
+player1_jump_throw_8_left = pygame.image.load('graphics/ninja_1/Jump_Throw__008.png').convert_alpha()
+player1_jump_throw_8_left = pygame.transform.scale(player1_jump_throw_8_left, (110,110))
+player1_jump_throw_8_left = pygame.transform.flip(player1_jump_throw_8_left, True, False)
+player1_jump_throw_9_left = pygame.image.load('graphics/ninja_1/Jump_Throw__009.png').convert_alpha()
+player1_jump_throw_9_left = pygame.transform.scale(player1_jump_throw_9_left, (110,110))
+player1_jump_throw_9_left = pygame.transform.flip(player1_jump_throw_9_left, True, False)
+
+player1_jump_throw_animation_left = [player1_jump_throw_0_left, player1_jump_throw_1_left, player1_jump_throw_2_left, player1_jump_throw_3_left, player1_jump_throw_4_left, player1_jump_throw_5_left, player1_jump_throw_6_left, player1_jump_throw_7_left, player1_jump_throw_8_left, player1_jump_throw_9_left]
+
 ###_________________________________________________________________________________
 #ATTACK p2
 ###_________________________________________________________________________________
@@ -325,6 +565,29 @@ player2_attack_9 = pygame.transform.flip(player2_attack_9, True, False)
 
 player2_attack_animation = [player2_attack_0, player2_attack_1, player2_attack_2, player2_attack_3, player2_attack_4, player2_attack_5, player2_attack_6, player2_attack_7, player2_attack_8, player2_attack_9]
 
+player2_attack_0_right = pygame.image.load('graphics/ninja_2/Attack__000.png').convert_alpha()
+player2_attack_0_right = pygame.transform.scale(player2_attack_0_right, (130,115))
+player2_attack_1_right = pygame.image.load('graphics/ninja_2/Attack__001.png').convert_alpha()
+player2_attack_1_right = pygame.transform.scale(player2_attack_1_right, (130,115))
+player2_attack_2_right = pygame.image.load('graphics/ninja_2/Attack__002.png').convert_alpha()
+player2_attack_2_right = pygame.transform.scale(player2_attack_2_right, (130,115))
+player2_attack_3_right = pygame.image.load('graphics/ninja_2/Attack__003.png').convert_alpha()
+player2_attack_3_right = pygame.transform.scale(player2_attack_3_right, (130,115))
+player2_attack_4_right = pygame.image.load('graphics/ninja_2/Attack__004.png').convert_alpha()
+player2_attack_4_right = pygame.transform.scale(player2_attack_4_right, (130,115))
+player2_attack_5_right = pygame.image.load('graphics/ninja_2/Attack__005.png').convert_alpha()
+player2_attack_5_right = pygame.transform.scale(player2_attack_5_right, (130,115))
+player2_attack_6_right = pygame.image.load('graphics/ninja_2/Attack__006.png').convert_alpha()
+player2_attack_6_right = pygame.transform.scale(player2_attack_6_right, (130,115))
+player2_attack_7_right = pygame.image.load('graphics/ninja_2/Attack__007.png').convert_alpha()
+player2_attack_7_right = pygame.transform.scale(player2_attack_7_right, (130,115))
+player2_attack_8_right = pygame.image.load('graphics/ninja_2/Attack__008.png').convert_alpha()
+player2_attack_8_right = pygame.transform.scale(player2_attack_8_right, (130,115))
+player2_attack_9_right = pygame.image.load('graphics/ninja_2/Attack__009.png').convert_alpha()
+player2_attack_9_right = pygame.transform.scale(player2_attack_9_right, (130,115))
+
+player2_attack_animation_right = [player2_attack_0_right, player2_attack_1_right, player2_attack_2_right, player2_attack_3_right, player2_attack_4_right, player2_attack_5_right, player2_attack_6_right, player2_attack_7_right, player2_attack_8_right, player2_attack_9_right]
+
 
 player2_throw_0 = pygame.image.load('graphics/ninja_2/Throw__000.png').convert_alpha()
 player2_throw_0= pygame.transform.scale(player2_throw_0, (110,110))
@@ -359,6 +622,30 @@ player2_throw_9 = pygame.transform.flip(player2_throw_9, True, False)
 
 player2_throw_animation = [player2_throw_0, player2_throw_1, player2_throw_2, player2_throw_3, player2_throw_4, player2_throw_5, player2_throw_6, player2_throw_7, player2_throw_8, player2_throw_9]
 
+player2_throw_0_right = pygame.image.load('graphics/ninja_2/Throw__000.png').convert_alpha()
+player2_throw_0_right = pygame.transform.scale(player2_throw_0_right, (130,115))
+player2_throw_1_right= pygame.image.load('graphics/ninja_2/Throw__001.png').convert_alpha()
+player2_throw_1_right = pygame.transform.scale(player2_throw_1_right, (130,115))
+player2_throw_2_right = pygame.image.load('graphics/ninja_2/Throw__002.png').convert_alpha()
+player2_throw_2_right = pygame.transform.scale(player2_throw_2_right, (130,115))
+player2_throw_3_right = pygame.image.load('graphics/ninja_2/Throw__003.png').convert_alpha()
+player2_throw_3_right = pygame.transform.scale(player2_throw_3, (130,115))
+player2_throw_4_right = pygame.image.load('graphics/ninja_2/Throw__004.png').convert_alpha()
+player2_throw_4_right = pygame.transform.scale(player2_throw_4_right, (130,115))
+player2_throw_5_right = pygame.image.load('graphics/ninja_2/Throw__005.png').convert_alpha()
+player2_throw_5_right = pygame.transform.scale(player2_throw_5_right, (130,115))
+player2_throw_6_right= pygame.image.load('graphics/ninja_2/Throw__006.png').convert_alpha()
+player2_throw_6_right= pygame.transform.scale(player2_throw_6_right, (130,115))
+player2_throw_7_right= pygame.image.load('graphics/ninja_2/Throw__007.png').convert_alpha()
+player2_throw_7_right= pygame.transform.scale(player2_throw_7_right, (130,115))
+player2_throw_8_right = pygame.image.load('graphics/ninja_2/Throw__008.png').convert_alpha()
+player2_throw_8_right = pygame.transform.scale(player2_throw_8_right, (130,115))
+player2_throw_9_right = pygame.image.load('graphics/ninja_2/Throw__009.png').convert_alpha()
+player2_throw_9_right = pygame.transform.scale(player2_throw_9_right, (130,115))
+
+player2_throw_animation_right = [player2_throw_0_right, player2_throw_1_right, player2_throw_2_right, player2_throw_3_right, player2_throw_4_right, player2_throw_5_right, player2_throw_6_right, player2_throw_7_right, player2_throw_8_right, player2_throw_9_right]
+
+
 player2_jump_throw_0 = pygame.image.load('graphics/ninja_2/Jump_Throw__000.png').convert_alpha()
 player2_jump_throw_0= pygame.transform.scale(player2_jump_throw_0, (110,110))
 player2_jump_throw_0 = pygame.transform.flip(player2_jump_throw_0, True, False)
@@ -392,6 +679,28 @@ player2_jump_throw_9 = pygame.transform.flip(player2_jump_throw_9, True, False)
 
 player2_jump_throw_animation = [player2_jump_throw_0, player2_jump_throw_1, player2_jump_throw_2, player2_jump_throw_3, player2_jump_throw_4, player2_jump_throw_5, player2_jump_throw_6, player2_jump_throw_7, player2_jump_throw_8, player2_jump_throw_9]
 
+player2_jump_throw_0_right = pygame.image.load('graphics/ninja_2/Jump_Throw__000.png').convert_alpha()
+player2_jump_throw_0_right = pygame.transform.scale(player2_jump_throw_0_right, (130,115))
+player2_jump_throw_1_right = pygame.image.load('graphics/ninja_2/Jump_Throw__001.png').convert_alpha()
+player2_jump_throw_1_right = pygame.transform.scale(player2_jump_throw_1_right, (130,115))
+player2_jump_throw_2_right = pygame.image.load('graphics/ninja_2/Jump_Throw__003.png').convert_alpha()
+player2_jump_throw_2_right = pygame.transform.scale(player2_jump_throw_2_right, (130,115))
+player2_jump_throw_3_right = pygame.image.load('graphics/ninja_2/Jump_Throw__003.png').convert_alpha()
+player2_jump_throw_3_right = pygame.transform.scale(player2_jump_throw_3_right, (130,115))
+player2_jump_throw_4_right = pygame.image.load('graphics/ninja_2/Jump_Throw__004.png').convert_alpha()
+player2_jump_throw_4_right = pygame.transform.scale(player2_jump_throw_4_right, (130,115))
+player2_jump_throw_5_right = pygame.image.load('graphics/ninja_2/Jump_Throw__005.png').convert_alpha()
+player2_jump_throw_5_right = pygame.transform.scale(player2_jump_throw_5_right, (130,115))
+player2_jump_throw_6_right = pygame.image.load('graphics/ninja_2/Jump_Throw__006.png').convert_alpha()
+player2_jump_throw_6_right = pygame.transform.scale(player2_jump_throw_6_right, (130,115))
+player2_jump_throw_7_right = pygame.image.load('graphics/ninja_2/Jump_Throw__007.png').convert_alpha()
+player2_jump_throw_7_right = pygame.transform.scale(player2_jump_throw_7_right, (130,115))
+player2_jump_throw_8_right = pygame.image.load('graphics/ninja_2/Jump_Throw__008.png').convert_alpha()
+player2_jump_throw_8_right = pygame.transform.scale(player2_jump_throw_8_right, (130,115))
+player2_jump_throw_9_right = pygame.image.load('graphics/ninja_2/Jump_Throw__009.png').convert_alpha()
+player2_jump_throw_9_right = pygame.transform.scale(player2_jump_throw_9_right, (130,115))
+
+player2_jump_throw_animation_right = [player2_jump_throw_0_right,player2_jump_throw_1_right, player2_jump_throw_2_right, player2_jump_throw_3_right, player2_jump_throw_4_right, player2_jump_throw_5_right, player2_jump_throw_6_right, player2_jump_throw_7_right, player2_jump_throw_8_right, player2_jump_throw_9_right]
 
 
 ###_________________________________________________________________________________
@@ -483,6 +792,41 @@ player1_walk_9 = pygame.transform.scale(player1_walk_9, (105,105))
 
 player1_walk_animation = [player1_walk_0, player1_walk_1, player1_walk_2, player1_walk_3, player1_walk_4, player1_walk_5, player1_walk_6, player1_walk_7, player1_walk_8, player1_walk_9]
 
+
+player1_walk_left_0 = pygame.image.load('graphics/ninja_1/Run__000.png').convert_alpha()
+player1_walk_left_0= pygame.transform.scale(player1_walk_left_0, (105,105))
+player1_walk_left_0 = pygame.transform.flip(player1_walk_left_0, True, False)
+player1_walk_left_1 = pygame.image.load('graphics/ninja_1/Run__001.png').convert_alpha()
+player1_walk_left_1= pygame.transform.scale(player1_walk_left_1, (105,105))
+player1_walk_left_1 = pygame.transform.flip(player1_walk_left_1 , True, False)
+player1_walk_left_2 = pygame.image.load('graphics/ninja_1/Run__002.png').convert_alpha()
+player1_walk_left_2 = pygame.transform.scale(player1_walk_left_2, (105,105))
+player1_walk_left_2 = pygame.transform.flip(player1_walk_left_2, True, False)
+player1_walk_left_3 = pygame.image.load('graphics/ninja_1/Run__003.png').convert_alpha()
+player1_walk_left_3 = pygame.transform.scale(player1_walk_left_3, (105,105))
+player1_walk_left_3 = pygame.transform.flip(player1_walk_left_3, True, False)
+player1_walk_left_4 = pygame.image.load('graphics/ninja_1/Run__004.png').convert_alpha()
+player1_walk_left_4 = pygame.transform.scale(player1_walk_left_4, (105,105))
+player1_walk_left_4 = pygame.transform.flip(player1_walk_left_4, True, False)
+player1_walk_left_5 = pygame.image.load('graphics/ninja_1/Run__005.png').convert_alpha()
+player1_walk_left_5 = pygame.transform.scale(player1_walk_left_5, (105,105))
+player1_walk_left_5= pygame.transform.flip(player1_walk_left_5, True, False)
+player1_walk_left_6 = pygame.image.load('graphics/ninja_1/Run__006.png').convert_alpha()
+player1_walk_left_6 = pygame.transform.scale(player1_walk_left_6, (105,105))
+player1_walk_left_6 = pygame.transform.flip(player1_walk_left_6, True, False)
+player1_walk_left_7 = pygame.image.load('graphics/ninja_1/Run__007.png').convert_alpha()
+player1_walk_left_7 = pygame.transform.scale(player1_walk_left_7, (105,105))
+player1_walk_left_7= pygame.transform.flip(player1_walk_left_7, True, False)
+player1_walk_left_8 = pygame.image.load('graphics/ninja_1/Run__008.png').convert_alpha()
+player1_walk_left_8 = pygame.transform.scale(player1_walk_left_8, (105,105))
+player1_walk_left_8 = pygame.transform.flip(player1_walk_left_8, True, False)
+player1_walk_left_9 = pygame.image.load('graphics/ninja_1/Run__009.png').convert_alpha()
+player1_walk_left_9 = pygame.transform.scale(player1_walk_left_9, (105,105))
+player1_walk_left_9 = pygame.transform.flip(player1_walk_left_9 , True, False)
+
+player1_walk_animation_left = [player1_walk_left_0, player1_walk_left_1, player1_walk_left_2, player1_walk_left_3, player1_walk_left_4, player1_walk_left_5, player1_walk_left_6, player1_walk_left_7, player1_walk_left_8, player1_walk_left_9]
+
+
 ###_________________________________________________________________________________
 #WALK player 2
 ###_________________________________________________________________________________
@@ -519,6 +863,28 @@ player2_walk_9 = pygame.transform.flip(player2_walk_9, True, False)
 
 player2_walk_animation = [player2_walk_0, player2_walk_1, player2_walk_2, player2_walk_3, player2_walk_4, player2_walk_5, player2_walk_6, player2_walk_7, player2_walk_8, player2_walk_9]
 
+player2_walk_0_right = pygame.image.load('graphics/ninja_2/Run__000.png').convert_alpha()
+player2_walk_0_right = pygame.transform.scale(player2_walk_0_right, (105,105))
+player2_walk_1_right = pygame.image.load('graphics/ninja_2/Run__001.png').convert_alpha()
+player2_walk_1_right = pygame.transform.scale(player2_walk_1_right, (105,105))
+player2_walk_2_right = pygame.image.load('graphics/ninja_2/Run__002.png').convert_alpha()
+player2_walk_2_right = pygame.transform.scale(player2_walk_2_right, (105,105))
+player2_walk_3_right = pygame.image.load('graphics/ninja_2/Run__003.png').convert_alpha()
+player2_walk_3_right = pygame.transform.scale(player2_walk_3_right, (105,105))
+player2_walk_4_right = pygame.image.load('graphics/ninja_2/Run__004.png').convert_alpha()
+player2_walk_4_right = pygame.transform.scale(player2_walk_4_right, (105,105))
+player2_walk_5_right = pygame.image.load('graphics/ninja_2/Run__005.png').convert_alpha()
+player2_walk_5_right = pygame.transform.scale(player2_walk_5_right, (105,105))
+player2_walk_6_right = pygame.image.load('graphics/ninja_2/Run__006.png').convert_alpha()
+player2_walk_6_right = pygame.transform.scale(player2_walk_6_right, (105,105))
+player2_walk_7_right = pygame.image.load('graphics/ninja_2/Run__007.png').convert_alpha()
+player2_walk_7_right = pygame.transform.scale(player2_walk_7_right, (105,105))
+player2_walk_8_right = pygame.image.load('graphics/ninja_2/Run__008.png').convert_alpha()
+player2_walk_8_right = pygame.transform.scale(player2_walk_8_right, (105,105))
+player2_walk_9_right = pygame.image.load('graphics/ninja_2/Run__009.png').convert_alpha()
+player2_walk_9_right = pygame.transform.scale(player2_walk_9_right, (105,105))
+
+player2_walk_animation_right = [player2_walk_0_right, player2_walk_1_right, player2_walk_2_right, player2_walk_3_right, player2_walk_4_right, player2_walk_5_right, player2_walk_6_right, player2_walk_7_right, player2_walk_8_right, player2_walk_9_right]
 
 
 
@@ -534,10 +900,16 @@ while True:
 
             elif keys[pygame.K_a]:
                 player_1_rect.x -= 6
-                walk_p1()
+                if event.type != pygame.K_d and not keys[pygame.K_a]:
+                    player_animation_p1_left()
+                else:
+                     walk_p1_left()
+                
+
             elif keys[pygame.K_d]:
                 player_1_rect.x += 6
                 walk_p1()
+
             elif keys[pygame.K_q]:
                 attack_p1()
     
@@ -545,7 +917,7 @@ while True:
                 player_animation_p1()
 
         elif keys[pygame.K_e] and keys[pygame.K_w]:
-             jump_throw_attack_p1()
+            jump_throw_attack_p1()
 
         elif keys[pygame.K_d] and keys[pygame.K_w]:
             player_animation_p1()
@@ -553,7 +925,7 @@ while True:
 
 
         elif keys[pygame.K_a] and keys[pygame.K_w]:
-            player_animation_p1()
+            player_animation_p1_left()
             player_1_rect.x -= 6
 
 
@@ -566,12 +938,15 @@ while True:
         if player_2_rect.bottom >= 300:
             if keys[pygame.K_RETURN]:
                  throw_attack_p2()
+
+            elif keys[pygame.K_RIGHT]:
+                player_2_rect.x += 6
+                walk_p2_right()
+
             elif keys[pygame.K_LEFT]:
                 player_2_rect.x -= 6
                 walk_p2()
-            elif keys[pygame.K_RIGHT]:
-                player_2_rect.x += 6
-                walk_p2()
+                
             elif keys[pygame.K_RSHIFT]:
                 attack_p2()
 
